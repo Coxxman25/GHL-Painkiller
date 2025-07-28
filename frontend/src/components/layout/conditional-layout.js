@@ -17,6 +17,7 @@ const LAYOUT_PAGES = [
   '/settings',
   '/builder',
   '/help',
+  '/marketplace',
 ];
 
 export function ConditionalLayout({ children }) {

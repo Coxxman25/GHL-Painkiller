@@ -1,101 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer base {
   :root {
-    /* Light Gray Background (instead of white) */
-    --background: 220 8% 94%;
-    --foreground: 220 15% 15%;
-    --card: 220 8% 96%;
-    --card-foreground: var(--foreground);
-
-    --popover: var(--card);
-    --popover-foreground: var(--foreground);
-
-    /* Electric Blue/Turquoise Primary */
-    --primary: 185 85% 55%;
-    --primary-foreground: 0 0% 100%;
-
-    /* Subtle grays for secondary elements */
-    --secondary: 220 8% 88%;
-    --secondary-foreground: 220 15% 25%;
-
-    /* Electric blue accent (slightly more vibrant) */
-    --accent: 185 90% 60%;
-    --accent-foreground: 0 0% 100%;
-
-    /* Muted grays */
-    --muted: 220 8% 90%;
-    --muted-foreground: 220 10% 45%;
-
-    --destructive: 0 65% 50%;
-    --destructive-foreground: 0 0% 100%;
-
-    /* Electric blue borders and focus rings */
-    --border: 220 8% 85%;
-    --input: var(--border);
-    --ring: 185 85% 55%;
+    /* Legacy shadcn variables (for compatibility) */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
 
-    /* Brand Gradient Colors */
-    --brand-home-from: 99 102 241;
-    --brand-home-to: 139 92 246;
-    --brand-chats-from: 6 182 212;
-    --brand-chats-to: 59 130 246;
-    --brand-builder-from: 16 185 129;
-    --brand-builder-to: 5 150 105;
-    --brand-settings-from: 245 158 11;
-    --brand-settings-to: 217 119 6;
-    --brand-help-from: 236 72 153;
-    --brand-help-to: 190 24 93;
+    /* Aurora Design System - Light Mode */
+    --aurora-primary: 250 100% 70%;
+    --aurora-secondary: 280 100% 75%;
+    --aurora-tertiary: 320 100% 80%;
+    
+    /* Surface Colors */
+    --surface-glass: 255 255 255 / 0.1;
+    --surface-glass-hover: 255 255 255 / 0.15;
+    --surface-glass-border: 255 255 255 / 0.2;
+    --surface-elevated: 255 255 255 / 0.95;
+    
+    /* Text Colors */
+    --text-primary: 15 23 42;
+    --text-secondary: 71 85 105;
+    --text-tertiary: 148 163 184;
+    --text-accent: 250 100% 70%;
+    
+    /* Border Colors */
+    --border-primary: 226 232 240;
+    --border-muted: 241 245 249;
+    
+    /* Design System Variables */
+    --radius-container: 24px;
+    --radius-element: 16px;
+    --radius-pill: 9999px;
+    --backdrop-blur: 20px;
+    
+    /* Effects */
+    --glow-aurora: 0 0 40px hsl(var(--aurora-primary) / 0.3);
+    --glow-secondary: 0 0 30px hsl(var(--aurora-secondary) / 0.2);
+    --shadow-elevated: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
+
   .dark {
-    /* Dark mode with electric blue accents */
-    --background: 220 20% 8%;
-    --foreground: 220 8% 92%;
-    --card: 220 18% 10%;
-    --card-foreground: var(--foreground);
+    /* Legacy shadcn dark mode */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
 
-    --popover: var(--card);
-    --popover-foreground: var(--foreground);
-
-    /* Brighter electric blue for dark mode */
-    --primary: 185 85% 65%;
-    --primary-foreground: 220 20% 8%;
-
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 220 8% 85%;
-
-    /* Vibrant turquoise accent */
-    --accent: 185 90% 70%;
-    --accent-foreground: 220 20% 8%;
-
-    --muted: 220 15% 20%;
-    --muted-foreground: 220 8% 65%;
-
-    --destructive: 0 65% 55%;
-    --destructive-foreground: 0 0% 96%;
-
-    --border: 220 15% 22%;
-    --input: var(--border);
-    --ring: 185 85% 65%;
-
-    /* Brand Gradient Colors (same for dark mode) */
-    --brand-home-from: 99 102 241;
-    --brand-home-to: 139 92 246;
-    --brand-chats-from: 6 182 212;
-    --brand-chats-to: 59 130 246;
-    --brand-builder-from: 16 185 129;
-    --brand-builder-to: 5 150 105;
-    --brand-settings-from: 245 158 11;
-    --brand-settings-to: 217 119 6;
-    --brand-help-from: 236 72 153;
-    --brand-help-to: 190 24 93;
+    /* Aurora Design System - Dark Mode */
+    --aurora-primary: 250 100% 75%;
+    --aurora-secondary: 280 100% 80%;
+    --aurora-tertiary: 320 100% 85%;
+    
+    /* Surface Colors */
+    --surface-glass: 15 23 42 / 0.8;
+    --surface-glass-hover: 15 23 42 / 0.9;
+    --surface-glass-border: 71 85 105 / 0.3;
+    --surface-elevated: 15 23 42 / 0.95;
+    
+    /* Text Colors */
+    --text-primary: 248 250 252;
+    --text-secondary: 203 213 225;
+    --text-tertiary: 148 163 184;
+    --text-accent: 250 100% 75%;
+    
+    /* Border Colors */
+    --border-primary: 51 65 85;
+    --border-muted: 30 41 59;
+    
+    /* Effects */
+    --glow-aurora: 0 0 50px hsl(var(--aurora-primary) / 0.4);
+    --glow-secondary: 0 0 40px hsl(var(--aurora-secondary) / 0.3);
+    --shadow-elevated: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   }
 }
 
@@ -103,6 +115,20 @@ body {
   * {
     @apply border-border;
   }
+  
+  body {
+    @apply bg-background text-foreground font-inter;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-inter font-semibold;
+  }
+  
+  code {
+    @apply font-mono;
+  }
+  
   html, body {
     @apply bg-background text-foreground;
     overflow: hidden;
@@ -113,6 +139,89 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+  }
+}
+
+@layer components {
+  /* Aurora Glass Components */
+  .glass-panel {
+    @apply bg-surface-glass backdrop-blur-glass border border-surface-glass-border rounded-container;
+  }
+  
+  .glass-panel-hover {
+    @apply glass-panel hover:bg-surface-glass-hover transition-all duration-300;
+  }
+  
+  .glass-card {
+    @apply glass-panel p-6 shadow-elevated;
+  }
+  
+  .glass-button {
+    @apply glass-panel-hover px-4 py-2 text-text-primary font-medium transition-all duration-200;
+  }
+  
+  .glass-button-primary {
+    @apply glass-button bg-aurora-primary/20 border-aurora-primary/30 text-aurora-primary hover:bg-aurora-primary/30 hover:shadow-glow-aurora;
+  }
+  
+  /* Aurora Text Styles */
+  .text-gradient-aurora {
+    @apply bg-gradient-to-r from-aurora-primary via-aurora-secondary to-aurora-tertiary bg-clip-text text-transparent;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--aurora-primary) / 0.5);
+  }
+  
+  /* Aurora Animations */
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow-pulse {
+    from {
+      box-shadow: 0 0 20px hsl(var(--aurora-primary) / 0.2);
+    }
+    to {
+      box-shadow: 0 0 30px hsl(var(--aurora-primary) / 0.4);
+    }
+  }
+  
+  /* Micro-interactions */
+  .interactive-scale {
+    @apply transition-transform duration-200 hover:scale-105 active:scale-95;
+  }
+  
+  .interactive-lift {
+    @apply transition-all duration-300 hover:shadow-elevated hover:-translate-y-1;
+  }
+  
+  /* Scrollbar Styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-surface-glass rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-border-primary rounded-full hover:bg-aurora-primary/50;
+  }
+}
+
+@layer utilities {
+  /* Aurora Utility Classes */
+  .aurora-glow {
+    box-shadow: var(--glow-aurora);
+  }
+  
+  .secondary-glow {
+    box-shadow: var(--glow-secondary);
+  }
+  
+  .text-balance {
+    text-wrap: balance;
   }
 }
 

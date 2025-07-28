@@ -1,26 +1,36 @@
 'use client';
 
 import React from 'react';
-import { Sidebar } from './sidebar';
+import { usePathname } from 'next/navigation';
+import { AppLayout } from './enhanced-layout';
+import { AuroraSidebar } from '../navigation/aurora-sidebar';
 import { GradientNavigation } from '@/components/GradientNavigation';
 
+// Pages that use AppShell directly and don't need the old layout
+const APP_SHELL_PAGES = [
+  '/marketplace',
+  '/builder',
+];
+
 export const MainLayout = ({ children }) => {
+  const pathname = usePathname();
+  
+  // If the page uses AppShell directly, just render children
+  const usesAppShell = APP_SHELL_PAGES.some(page => 
+    pathname.startsWith(page)
+  );
+  
+  if (usesAppShell) {
+    return children;
+  }
+  
+  // For other pages, use the old layout
   return (
-    <div className="flex h-screen w-screen flex-col overflow-hidden">
-      {/* Top Gradient Navigation - Fixed height */}
-      <div className="flex-shrink-0">
-        <GradientNavigation />
-      </div>
-      
-      {/* Main content area with proper spacing */}
-      <div className="flex flex-1 min-h-0 overflow-hidden">
-        <Sidebar />
-        <main className="flex-1 overflow-auto p-4 min-w-0">
-          <div className="h-full max-w-full">
-            {children}
-          </div>
-        </main>
-      </div>
-    </div>
+    <AppLayout
+      sidebar={<AuroraSidebar />}
+      header={<GradientNavigation />}
+    >
+      {children}
+    </AppLayout>
   );
 };

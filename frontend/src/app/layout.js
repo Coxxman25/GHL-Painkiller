@@ -1,7 +1,8 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { UserProvider } from '@/context/user-context';
-import { ThemeProvider } from '@/context/theme-context';
+import { ThemeProvider as NextThemeProvider } from '@/context/theme-context';
+import { ThemeProvider as AuroraThemeProvider } from '@/design-system/providers/theme-provider';
 import { ModeProvider } from '@/context/mode-context';
 import { Toaster } from '@/components/ui/toaster';
 import { ConditionalLayout } from '@/components/layout/conditional-layout';
@@ -14,7 +15,7 @@ export const viewport = {
 };
 
 export const metadata = {
-  title: 'GHL Painkiller - AI-Powered App and Game Builder',
+  title: 'Spark Stack - AI-Powered App and Game Builder',
   description:
     'Build full stack apps and games in seconds using AI. Subscriptionless alternative to v0.dev and bolt.new.',
   manifest: '/manifest.json',
@@ -26,18 +27,18 @@ export const metadata = {
     'claude sonnet app builder',
   ],
   openGraph: {
-    title: 'GHL Painkiller',
+    title: 'Spark Stack',
     description:
       'Build full stack apps and games in seconds using AI. Subscriptionless alternative to v0.dev and bolt.new.',
     url: 'https://sparkstack.app',
-    siteName: 'GHL Painkiller',
+    siteName: 'Spark Stack',
     images: [],
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GHL Painkiller',
+    title: 'Spark Stack',
     description:
       'Build full stack apps and games in seconds using AI. Subscriptionless alternative to v0.dev and bolt.new.',
     images: [],
@@ -46,22 +47,24 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#000000" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={inter.className}>
-        <ThemeProvider>
-          <UserProvider>
-            <ModeProvider>
-              <ConditionalLayout>
-                {children}
-              </ConditionalLayout>
-              <Toaster />
-            </ModeProvider>
-          </UserProvider>
-        </ThemeProvider>
+      <body className={inter.className} suppressHydrationWarning>
+        <AuroraThemeProvider defaultTheme="system" storageKey="spark-stack-theme">
+          <NextThemeProvider>
+            <UserProvider>
+              <ModeProvider>
+                <ConditionalLayout>
+                  {children}
+                </ConditionalLayout>
+                <Toaster />
+              </ModeProvider>
+            </UserProvider>
+          </NextThemeProvider>
+        </AuroraThemeProvider>
       </body>
     </html>
   );

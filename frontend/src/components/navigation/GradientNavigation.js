@@ -2,50 +2,50 @@
 
 import React, { useState } from 'react';
 import { 
-  IoHomeOutline, 
+  IoStorefrontOutline, 
   IoChatbubbleOutline, 
-  IoCodeSlashOutline, 
-  IoSettingsOutline, 
-  IoHelpCircleOutline 
+  IoLayersOutline, 
+  IoFolderOutline, 
+  IoBookOutline 
 } from 'react-icons/io5';
 import { useRouter } from 'next/navigation';
 import { ModeToggle } from '@/components/mode/ModeToggle';
 
 const menuItems = [
   { 
-    title: 'Home', 
-    icon: <IoHomeOutline />, 
+    title: 'Marketplace', 
+    icon: <IoStorefrontOutline />, 
     gradientFrom: '#6366f1', 
     gradientTo: '#8b5cf6',
-    href: '/chats/new'
+    href: '/marketplace'
   },
   { 
-    title: 'Chats', 
+    title: 'AI Assistant', 
     icon: <IoChatbubbleOutline />, 
     gradientFrom: '#06b6d4', 
     gradientTo: '#3b82f6',
-    href: '/chats'
+    href: '/assistant'
   },
   { 
     title: 'Builder', 
-    icon: <IoCodeSlashOutline />, 
+    icon: <IoLayersOutline />, 
     gradientFrom: '#10b981', 
     gradientTo: '#059669',
     href: '/builder'
   },
   { 
-    title: 'Settings', 
-    icon: <IoSettingsOutline />, 
+    title: 'My Automations', 
+    icon: <IoFolderOutline />, 
     gradientFrom: '#f59e0b', 
     gradientTo: '#d97706',
-    href: '/settings'
+    href: '/automations'
   },
   { 
-    title: 'Help', 
-    icon: <IoHelpCircleOutline />, 
+    title: 'Docs', 
+    icon: <IoBookOutline />, 
     gradientFrom: '#ec4899', 
     gradientTo: '#be185d',
-    href: '/help'
+    href: '/docs'
   }
 ];
 
@@ -63,7 +63,7 @@ export function GradientNavigation() {
       <div className="flex items-center justify-between">
         {/* Logo/Brand */}
         <div className="flex items-center space-x-4">
-          <h1 className="text-xl font-bold gradient-text">GHL Painkiller</h1>
+          <h1 className="text-xl font-bold gradient-text">TriggerStack</h1>
         </div>
 
         {/* Gradient Navigation Menu */}
